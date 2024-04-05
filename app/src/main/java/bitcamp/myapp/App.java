@@ -16,9 +16,9 @@ import java.util.Map.Entry;
 @SpringBootApplication
 @EnableTransactionManagement
 @PropertySource({
-    "file:${HOME}/config/jdbc.properties",
-    "file:${HOME}/config/ncp.properties",
-    "file:${HOME}/config/ncp-secret.properties"
+        "file:${HOME}/config/jdbc.properties",
+        "file:${HOME}/config/ncp.properties",
+        "file:${HOME}/config/ncp-secret.properties"
 })
 @Controller
 public class App {
