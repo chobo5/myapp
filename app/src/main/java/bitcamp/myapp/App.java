@@ -1,5 +1,8 @@
 package bitcamp.myapp;
 
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,16 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Properties;
-import java.util.Set;
-import java.util.Map.Entry;
-
 @SpringBootApplication
 @EnableTransactionManagement
 @PropertySource({
-        "file:${HOME}/config/jdbc.properties",
-        "file:${HOME}/config/ncp.properties",
-        "file:${HOME}/config/ncp-secret.properties"
+    "file:${user.home}/config/jdbc.properties",
+    "file:${user.home}/config/ncp.properties",
+    "file:${user.home}/config/ncp-secret.properties"
 })
 @Controller
 public class App {
@@ -28,16 +27,7 @@ public class App {
   public static void main(String[] args) throws Exception {
     log.info("과제관리 시스템 서버 실행!");
     SpringApplication.run(App.class, args);
-    Properties props = System.getProperties();
-    Set<Entry<Object, Object>> entrySet = props.entrySet();
-
-    for (Entry<Object, Object> entry : entrySet) {
-      System.out.printf("%s=%s\n", entry.getKey(), entry.getValue());
-
-    }
   }
-
-
 
   @GetMapping("/home")
   public void home() {
